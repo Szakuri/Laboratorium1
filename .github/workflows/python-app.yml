@@ -11,15 +11,19 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
+  build: 
     runs-on: ubuntu-latest
-    
-      working-directory:./example-app
+
+    defaults:
+      run: 
+        working-directory: .example-app
+
+
+
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python 3.10
+    - name: Set up Python 3.10  
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
@@ -32,18 +36,18 @@ jobs:
          virtualenvs-in-project: false
          installer-parallel: true
          
-    - name: Poetry Install
-      run: 
+    - name: Install Depedenties
+      run: |
           poetry install --no-root
   
     - name: Poetry Test1
-      run: 
+      run: |
           poetry run task test
     - name: Poetry lint1
-      run:
+      run: |
           poetry run task lint
     - name: Poetry security1
-      run:
+      run: |
           poetry run task security
     
   
