@@ -36,9 +36,7 @@ jobs:
          virtualenvs-in-project: false
          installer-parallel: true
          
-    - name: Install Depedenties
-      run: |
-          poetry install --no-root
+    
   
     - name: Poetry Test1
       run: |
@@ -49,6 +47,9 @@ jobs:
     - name: Poetry security1
       run: |
           poetry run task security
+    - name: Install Depedenties
+      run: |
+          poetry install --no-root
     
   
     - name: Test with pytest
